@@ -1,9 +1,10 @@
 module.exports = {
+  devtool: 'inline-source-map',
   entry: [
     './src/index'
   ],
   output: {
-    path: __dirname,
+    path: __dirname + "/src/public",
     publicPath: '/',
     filename: 'src/public/bundle.js'
   },
@@ -22,5 +23,5 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './'
-  }
+  },
 };
