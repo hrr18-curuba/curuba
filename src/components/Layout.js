@@ -47,17 +47,17 @@ const Layout = () => {
 
         <div className="row">
             <div className="col-sm-4">
-                <img className="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="" />
+                <img className="img-circle img-responsive img-center" src="images/chef.jpg" alt="" />
                 <h2>Food Photo #1</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et molestiae similique eligendi reiciendis sunt distinctio odit? Quia, neque, ipsa, adipisci quisquam ullam deserunt accusantium illo iste exercitationem nemo voluptates asperiores.</p>
             </div>
             <div className="col-sm-4">
-                <img className="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="" />
+                <img className="img-circle img-responsive img-center" src="images/pasta.jpg" alt="" />
                 <h2>Cooking Photo #2</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et molestiae similique eligendi reiciendis sunt distinctio odit? Quia, neque, ipsa, adipisci quisquam ullam deserunt accusantium illo iste exercitationem nemo voluptates asperiores.</p>
             </div>
             <div className="col-sm-4">
-                <img className="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="" />
+                <img className="img-circle img-responsive img-center" src="images/spices.jpg" alt="" />
                 <h2>Food Photo #3</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et molestiae similique eligendi reiciendis sunt distinctio odit? Quia, neque, ipsa, adipisci quisquam ullam deserunt accusantium illo iste exercitationem nemo voluptates asperiores.</p>
             </div>
