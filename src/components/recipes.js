@@ -3,18 +3,18 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 class Recipes extends Component {
-  componentWillMount(){
-    this.props.fetchMessage();
-  }
+
   render(){
     return (
-      <div> Recipe Search! </div>
+      <div>
+      <div className="form-group">
+      <input type="text" ref="keyword" className="form-control input-sm" placeholder="Grilled Chicken, BBQ Ribs, French Onion Soup... + Enter" />
+      </div>
+      </div>
     );
   }
 }
 
-function mapStateToProps(state){
-  return {message: state.auth.message}
-}
 
-export default connect(mapStateToProps, actions)(Recipes);
+
+export default connect(null, actions)(Recipes);
