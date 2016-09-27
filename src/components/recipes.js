@@ -8,7 +8,7 @@ class Recipes extends Component {
   }
   render(){
     return (
-      <div> {this.props.message} </div>
+      <div> Recipe Search! </div>
     );
   }
 }
