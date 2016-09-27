@@ -18,7 +18,7 @@ export function signinUser({email, password}){
       localStorage.setItem('token', response.data.token);
 
 
-      browserHistory.push('/feature');
+      browserHistory.push('/recipes');
     })
     .catch(() => {
       dispatch(authError('Incorrect login information'));
@@ -33,7 +33,7 @@ export function signupUser({email, password}){
     .then(response => {
       dispatch({type: AUTH_USER});
       localStorage.setItem('token', response.data.token);
-      browserHistory.push('/feature');
+      browserHistory.push('/recipes');
     })
     .catch(response => dispatch(authError(response.data.error)));
   }
