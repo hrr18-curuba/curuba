@@ -3,23 +3,25 @@ import {reduxForm} from 'redux-form';
 import * as actions from '../../actions'
 
 class Signin extends Component {
+
   handleFormSubmit({email, password}){
-    console.log(email, password);
-    this.props.siginUser({email, password})
+
+    this.props.signinUser({email, password});
   }
 
     renderAlert(){
       if (this.props.errorMessage) {
         return (
           <div className="alert alert-danger">
-          <strong>Oops!</strong> {this.props.errorMessage}
+          <strong>Uh Oh!</strong> {this.props.errorMessage}
           </div>
         );
       }
     }
 
   render(){
-    const { handleSubmit, fields: {email, password}} = this.props
+    const {handleSubmit, fields: {email, password}} = this.props;
+
     return(
     <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
       <fieldset className="form-group">

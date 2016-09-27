@@ -10,7 +10,6 @@ export default class App extends Component {
       <div>
         <NavBar />
         {this.props.children}
-        <Layout />
         <Footer />
       </div>
     );

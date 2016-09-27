@@ -3,7 +3,8 @@ import {browserHistory} from 'react-router';
 import {
   AUTH_USER,
   UNAUTH_USER,
-  AUTH_ERROR
+  AUTH_ERROR,
+  FETCH_MESSAGE
 } from './types';
 
 
@@ -17,12 +18,24 @@ export function signinUser({email, password}){
       localStorage.setItem('token', response.data.token);
 
 
-      browserHistory.push('/feature');
+      browserHistory.push('/recipes');
     })
     .catch(() => {
       dispatch(authError('Incorrect login information'));
     });
 
+  }
+}
+
+export function signupUser({email, password}){
+  return function(dispatch){
+    axios.post(`${ROOT_URL}/signup`, {email, password})
+    .then(response => {
+      dispatch({type: AUTH_USER});
+      localStorage.setItem('token', response.data.token);
+      browserHistory.push('/recipes');
+    })
+    .catch(response => dispatch(authError(response.data.error)));
   }
 }
 
@@ -37,4 +50,18 @@ export function signoutUser () {
   localStorage.removeItem('token');
 
   return {type: UNAUTH_USER};
+}
+
+export function fetchMessage(){
+  return function(dispatch){
+    axios.get(ROOT_URL, {
+      headers: {authorization: localStorage.getItem('token')}
+    })
+    .then(rsponse => {
+      dispatch({
+        type: FETCH_MESSAGE,
+        payload: response.data.message
+      });
+    });
+  }
 }
