@@ -4,8 +4,12 @@ import {
   AUTH_USER,
   UNAUTH_USER,
   AUTH_ERROR,
-  FETCH_MESSAGE
+  FETCH_MESSAGE,
+  SEARCH_PENDING,
+  SEARCH_DONE
 } from './types';
+
+import recipeSearch from '../api/recipeSearch';
 
 
 const ROOT_URL = 'http://localhost:3090';
@@ -64,4 +68,24 @@ export function fetchMessage(){
       });
     });
   }
+}
+
+
+function searchRecipesWithAPI(keyword, dispatch) {
+ dispatch({
+  type: types.SEARCH_PENDING,
+    });
+  recipeSearch(keyword, (data) => {
+    dispatch({
+      type: types.SEARCH_DONE,
+      recipes: data.recipes,
+      keyword,
+    });
+  });
+}
+
+export function searchRecipeAction(keyword) {
+  return (dispatch) => {
+    searchRecipesWithAPI(keyword, dispatch);
+  };
 }

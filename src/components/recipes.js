@@ -1,20 +1,38 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
+import ReactDom from 'react-dom'
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 class Recipes extends Component {
-  componentWillMount(){
-    this.props.fetchMessage();
+ static propTypes = {
+    actions: PropTypes.object,
+    status: PropTypes.string,
+  };
+
+  searchRecipe(event) {
+    if (event.which === 13) {
+      const val = ReactDom.findDOMNode(this.refs.keyword).value;
+      console.log(this.props);
+      this.props.actions.searchRecipeAction(val);
+
+      document.getElementById('header').style.animationPlayState = 'running';
+    }
   }
   render(){
     return (
-      <div> Recipe Search! </div>
+      <div>
+        <div className="form-group">
+          <input onKeyDown={this.searchRecipe.bind(this)} type="text" ref="keyword" className="form-control input-lg" placeholder="Chili, Greek Salad, Grilled Chicken, etc + Enter" />
+        </div>
+        {()=>{
+          if (this.props.status === 'PENDING') {
+            return (<div className="loading" />);
+          }
+        }}
+      </div>
     );
   }
 }
 
-function mapStateToProps(state){
-  return {message: state.auth.message}
-}
+export default connect(null, actions)(Recipes);
 
-export default connect(mapStateToProps, actions)(Recipes);
