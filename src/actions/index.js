@@ -75,6 +75,10 @@ function searchRecipesWithAPI(keyword, dispatch) {
  dispatch({
   type: types.SEARCH_PENDING,
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> minor bug fix
   recipeSearch(keyword, (data) => {
     dispatch({
       type: types.SEARCH_DONE,
