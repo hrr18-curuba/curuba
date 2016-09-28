@@ -1,7 +1,7 @@
 import {appID, appKey} from '../../config';
 
 
-export default function recipeSearch(keyword, results, callback) {
+export default function recipeSearch(keyword, callback) {
   fetch(`http://api.yummly.com/v1/api/recipes?_app_id=${appID}&_app_key=${appKey}&q=${keyword}
 &requirePictures=true`)
   .then(function(response) {

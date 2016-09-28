@@ -9,6 +9,8 @@ import {
   SEARCH_DONE
 } from './types';
 
+import recipeSearch from '../api/recipeSearch';
+
 
 const ROOT_URL = 'http://localhost:3090';
 
@@ -73,8 +75,6 @@ function searchRecipesWithAPI(keyword, dispatch) {
  dispatch({
   type: types.SEARCH_PENDING,
     });
-  }
-
   recipeSearch(keyword, (data) => {
     dispatch({
       type: types.SEARCH_DONE,
