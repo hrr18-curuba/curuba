@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 export default class RecipeList extends Component {
   static propTypes = {
     actions: PropTypes.object,
-    recipes: PropTypes.array,
+    matches: PropTypes.array,
     status: PropTypes.string,
   };
 
@@ -14,15 +14,20 @@ export default class RecipeList extends Component {
         <div className="row">
           {
 
-              this.props.recipes.map((item, index) => {
+              this.props.matches.map((item, index) => {
                 return (
+
                   <div className="col-md-3 image-item" key={`RecipeItem_${item.id}_${index}`}>
-                    <img src={item.images.hostedLargeUrl} />
+                  <ul>
+                    <li>
+                    <img src={item.imageUrlsBySize['90']} />
+                    {item.recipeName}
+                    </li>
+                  </ul>
                   </div>
                 );
               })
           }
-          <div className="clearfix" />
         </div>
       </div>
     );

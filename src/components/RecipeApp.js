@@ -5,15 +5,12 @@ import * as action from '../actions/index';
 import Recipes from './recipes';
 import RecipeList from '../components/RecipeList';
 
-connect(state => ({
-  recipes: state.recipes.photos,
-  status: state.photos.status,
-}))
-export default class RecipeApp extends Component {
+
+class RecipeApp extends Component {
 
   static propTypes = {
     status: PropTypes.string.isRequired,
-    recipes: PropTypes.array,
+    matches: PropTypes.array,
     dispatch: PropTypes.func.isRequired,
   }
 
@@ -32,9 +29,19 @@ export default class RecipeApp extends Component {
           </div>
         </div>
         <div className="container">
-          <RecipeList actions={actions} photos={this.props.recipes} status={this.props.status}/>
+        <RecipeList actions={actions} matches={this.props.matches} status={this.props.status}/>
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps(state){
+    return {
+        authenticated: state.auth.authenticated,
+        matches: state.matches.matches,
+        status: state.matches.status,
+    }
+}
+
+export default connect(mapStateToProps)(RecipeApp);

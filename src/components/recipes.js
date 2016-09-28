@@ -12,8 +12,8 @@ class Recipes extends Component {
   searchRecipe(event) {
     if (event.which === 13) {
       const val = ReactDom.findDOMNode(this.refs.keyword).value;
-      console.log(this.props);
       this.props.actions.searchRecipeAction(val);
+      console.log(this.props);
 
       document.getElementById('header').style.animationPlayState = 'running';
     }
