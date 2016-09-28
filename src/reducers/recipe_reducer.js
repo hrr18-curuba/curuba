@@ -2,7 +2,7 @@ import * as types from '../actions/types';
 
 const initialState = {
   status: 'IDLE',
-  recipes: [],
+  matches: [],
 };
 
 export default function searchRecipes(state = initialState, action) {
@@ -10,17 +10,18 @@ export default function searchRecipes(state = initialState, action) {
   case types.SEARCH_DONE:
     return {
       ...state,
-      recipes: [...state.photos, ...action.photos],
+      matches: [...state.matches, ...action.matches],
       status: 'DONE',
       keyword: action.keyword,
     };
   case types.SEARCH_PENDING:
     return {
       ...state,
-      recipes: [],
+      matches: [],
       status: 'PENDING',
     };
   default:
     return state;
   }
 }
+

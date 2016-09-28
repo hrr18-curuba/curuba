@@ -73,16 +73,12 @@ export function fetchMessage(){
 
 function searchRecipesWithAPI(keyword, dispatch) {
  dispatch({
-  type: types.SEARCH_PENDING,
+  type: SEARCH_PENDING,
     });
-<<<<<<< HEAD
-=======
-
->>>>>>> minor bug fix
   recipeSearch(keyword, (data) => {
     dispatch({
-      type: types.SEARCH_DONE,
-      recipes: data.recipes,
+      type: SEARCH_DONE,
+      matches: data.matches,
       keyword,
     });
   });
