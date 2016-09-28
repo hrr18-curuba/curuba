@@ -18,12 +18,10 @@ export default class RecipeList extends Component {
                 return (
 
                   <div className="col-md-3 image-item" key={`RecipeItem_${item.id}_${index}`}>
-                  <ul>
-                    <li>
+
                     <img src={item.imageUrlsBySize['90']} />
                     {item.recipeName}
-                    </li>
-                  </ul>
+
                   </div>
                 );
               })
