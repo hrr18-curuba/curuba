@@ -10,6 +10,9 @@
   },
   "author": "",
   "license": "MIT",
+    "engines": {
+    "node": "6.4.0"
+  },
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
