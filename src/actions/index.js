@@ -12,7 +12,7 @@ import {
 import recipeSearch from '../api/recipeSearch';
 
 
-const ROOT_URL = 'http://localhost:3090';
+const ROOT_URL = process.env.PORT || 'http://localhost:3090';
 
 export function signinUser({email, password}){
   return function(dispatch){
