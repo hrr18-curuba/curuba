@@ -22,7 +22,7 @@ class RecipeApp extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-6 col-md-offset-3 search-bar-content">
-                <h1>Search on Yummly</h1>
+                <h1>Search Via Yummly</h1>
                 <Recipes actions={actions} status={this.props.status} />
               </div>
             </div>
