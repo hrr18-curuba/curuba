@@ -89,3 +89,7 @@ export function searchRecipeAction(keyword) {
     searchRecipesWithAPI(keyword, dispatch);
   };
 }
+
+export function selectRecipe(recipe) {
+  console.log("test");
+}
