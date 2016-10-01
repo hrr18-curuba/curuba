@@ -93,3 +93,10 @@ export function searchRecipeAction(keyword) {
 export function selectRecipe(recipe) {
   console.log("test");
 }
+
+export function selectChef(chef) {
+  return {
+    type: 'CHEF_SELECTED',
+    payload: chef
+  }
+}

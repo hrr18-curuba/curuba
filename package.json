@@ -4,8 +4,8 @@
   "description": "HRR Thesis Project",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "start": "node server.js"
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "deploy": "node server.js"
   },
   "author": "",
   "node": "6.4.0",

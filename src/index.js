@@ -7,6 +7,7 @@ import reduxThunk from 'redux-thunk'
 import routes from './routes';
 
 import App from './components/App';
+import ChefApp from './components/ChefApp';
 import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
@@ -35,6 +36,7 @@ ReactDOM.render(
     <Route path="signout" component={Signout} />
     <Route path="signup" component={Signup} />
     <Route path="recipes" component={RequireAuth(RecipeApp)} />
+    <Route path="chefs" component={RequireAuth(ChefApp)} />
   </Route>
   </Router>
   </Provider>
