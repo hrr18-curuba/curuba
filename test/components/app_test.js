@@ -3,10 +3,11 @@ import App from '../../src/components/App';
 
 describe('App', () => {
 
-  it('Render text correctly', () => {
+
+  it('shows a navbar', () => {
 
     const component = renderComponent(App);
 
-    expect(component).to.contain('Buen Provecho');
+    expect(component.find('.navbar')).to.exist;
   });
 });
