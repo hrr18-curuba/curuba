@@ -14,12 +14,15 @@ import Signup from './components/auth/signup';
 import RecipeApp from'./components/RecipeApp';
 import RequireAuth from './components/auth/require_auth';
 import Layout from './components/Layout';
+import NewNotes from './components/NewNotes';
+import NoteBox from './components/NoteBox';
 import reducers from './reducers';
 import {AUTH_USER} from './actions/types';
+import promise from 'redux-promise';
 
 
 
-const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxThunk, promise)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 const token = localStorage.getItem('token');
@@ -37,6 +40,8 @@ ReactDOM.render(
     <Route path="signup" component={Signup} />
     <Route path="recipes" component={RequireAuth(RecipeApp)} />
     <Route path="chefs" component={RequireAuth(ChefApp)} />
+    <Route path="notebox" component={RequireAuth(NoteBox)} />
+    <Route path ="newnote" component={RequireAuth(NewNotes)} />
   </Route>
   </Router>
   </Provider>

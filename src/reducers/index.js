@@ -4,6 +4,7 @@ import authReducer from './auth_reducer';
 import matches from './recipe_reducer';
 import ChefsReducer from './chefs_reducer';
 import ActiveChef from './active_chef_reducer';
+import NotesReducer from './notes_reducer';
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   matches: matches,
   chefs: ChefsReducer,
-  activeChef: ActiveChef
+  activeChef: ActiveChef,
+  notes: NotesReducer
 });
 
 export default rootReducer;
