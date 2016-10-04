@@ -12,6 +12,7 @@ import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
 import RecipeApp from'./components/RecipeApp';
+import RecipeNotes from './components/RecipeNotes';
 import RequireAuth from './components/auth/require_auth';
 import Layout from './components/Layout';
 import NewNotes from './components/NewNotes';
@@ -42,6 +43,7 @@ ReactDOM.render(
     <Route path="chefs" component={RequireAuth(ChefApp)} />
     <Route path="notebox" component={RequireAuth(NoteBox)} />
     <Route path ="newnote" component={RequireAuth(NewNotes)} />
+    <Route path=":id" component={RequireAuth(RecipeNotes)} />
   </Route>
   </Router>
   </Provider>

@@ -1,14 +1,25 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 import {createNote} from '../actions/index';
 import {Link} from 'react-router';
 
 class NewNote extends Component{
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  onSubmit(props){
+    this.props.createNote(props)
+    .then( () => {
+      this.context.router.push('notebox');
+    });
+  }
+
   render(){
     const {fields: {title, categories, content},handleSubmit} = this.props;
 
         return (
-      <form onSubmit={handleSubmit(this.props.createNote)}>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
       <h3> Add a Recipe Note </h3>
 
 

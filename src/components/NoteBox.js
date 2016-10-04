@@ -9,6 +9,16 @@ class NoteBox extends Component{
   componentWillMount(){
     this.props.fetchNotes();
   }
+renderPosts() {
+  return this.props.notes.map((note) => {
+    return (
+      <li className="list-group-item" key={note._id} >
+      <span className="pull-right"> {note.categories} </span>
+      <strong> {note.title} </strong>
+      </li>
+      );
+  });
+}
 
   render(){
     return (
@@ -18,10 +28,18 @@ class NoteBox extends Component{
       Add a Note
       </Link>
       </div>
-       List of notes
+       <h3> My Recipes Notes </h3>
+       <ul className="list-group">
+       {this.renderPosts()}
+       </ul>
        </div>
       )
   }
+}
+
+
+function mapStateToProps(state) {
+  return {notes: state.notes.all};
 }
 
 function mapDispatchToProps(dispatch){
@@ -29,4 +47,4 @@ function mapDispatchToProps(dispatch){
 }
 
 
-export default connect(null, mapDispatchToProps)(NoteBox);
+export default connect(mapStateToProps, mapDispatchToProps)(NoteBox);
