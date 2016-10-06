@@ -10,12 +10,16 @@ class NoteBox extends Component{
     this.props.fetchNotes();
   }
 renderPosts() {
+  console.log(this.props);
   return this.props.notes.map((note) => {
     return (
       <li className="list-group-item" key={note._id} >
+      <Link to={note._id} >
       <span className="pull-right"> {note.categories} </span>
       <strong> {note.title} </strong>
+      </Link>
       </li>
+
       );
   });
 }

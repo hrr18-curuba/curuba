@@ -8,6 +8,7 @@ import routes from './routes';
 
 import App from './components/App';
 import ChefApp from './components/ChefApp';
+import CurrentRecipe from './components/CurrentRecipe';
 import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
@@ -20,7 +21,6 @@ import NoteBox from './components/NoteBox';
 import reducers from './reducers';
 import {AUTH_USER} from './actions/types';
 import promise from 'redux-promise';
-
 
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk, promise)(createStore);
@@ -43,8 +43,11 @@ ReactDOM.render(
     <Route path="chefs" component={RequireAuth(ChefApp)} />
     <Route path="notebox" component={RequireAuth(NoteBox)} />
     <Route path ="newnote" component={RequireAuth(NewNotes)} />
-    <Route path=":id" component={RequireAuth(RecipeNotes)} />
+    <Route path=":id" component={RequireAuth(CurrentRecipe)} />
   </Route>
   </Router>
   </Provider>
   ,document.getElementById("app"));
+
+
+ //<Route path=":id" component={RequireAuth(RecipeNotes)} />

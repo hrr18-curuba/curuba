@@ -21,6 +21,15 @@ module.exports = function(app) {
   });
  });
 
+ app.get('/api/posts/:id', (req, res) => {
+  Notes.findOne({ _id : collection.db.bson_serializer.ObjectID.createFromHexString(req.params.id), owner: req.user})
+  .then((note) => {
+    note.title = req.body.note.title;
+    note.categories = req.body.note.categories;
+    note.content = req.body.note.content;
+  });
+ });
+
 app.post('/api/posts', (req, res) => {
   const note = new Notes ({
     owner: req.user,

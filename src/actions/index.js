@@ -1,4 +1,5 @@
 import axios  from 'axios';
+import {appId, appKey} from '../../config';
 import {browserHistory} from 'react-router';
 import {
   AUTH_USER,
@@ -9,7 +10,10 @@ import {
   SEARCH_DONE,
   CHEF_SELECTED,
   FETCH_NOTES,
-  CREATE_NOTE
+  CREATE_NOTE,
+  FETCH_NOTE,
+  DELETE_NOTE,
+  FETCH_RECIPE
 } from './types';
 
 import recipeSearch from '../api/recipeSearch';
@@ -119,6 +123,33 @@ export function createNote(props){
 
   return {
     type: CREATE_NOTE,
+    payload: request
+  };
+}
+
+export function fetchNote(id){
+  const request = axios.get( `${ROOT_URL}/api/posts/${id}`);
+
+  return {
+    type: FETCH_NOTE,
+    payload: request
+  };
+}
+
+export function deletePost(id) {
+  const request = axios.delete(`${ROOT_URL}/${id}`);
+
+  return {
+    type: DELETE_NOTE,
+    payload: request
+  };
+}
+
+export function fetchRecipe(id) {
+  const request = axios.get(`http://api.yummly.com/v1/api/recipe/${id}?_app_id=${appId}&_app_key=${appKey}`);
+
+  return{
+    type: FETCH_RECIPE,
     payload: request
   };
 }
