@@ -1,4 +1,5 @@
 import axios  from 'axios';
+import {appId, appKey} from '../../config';
 import {browserHistory} from 'react-router';
 import {
   AUTH_USER,
@@ -6,13 +7,19 @@ import {
   AUTH_ERROR,
   FETCH_MESSAGE,
   SEARCH_PENDING,
-  SEARCH_DONE
+  SEARCH_DONE,
+  CHEF_SELECTED,
+  FETCH_NOTES,
+  CREATE_NOTE,
+  FETCH_NOTE,
+  DELETE_NOTE,
+  FETCH_RECIPE
 } from './types';
 
 import recipeSearch from '../api/recipeSearch';
 
 
-const ROOT_URL = process.env.PORT || 'http://localhost:3090';
+const ROOT_URL = 'http://localhost:3090';
 
 export function signinUser({email, password}){
   return function(dispatch){
@@ -96,7 +103,53 @@ export function selectRecipe(recipe) {
 
 export function selectChef(chef) {
   return {
-    type: 'CHEF_SELECTED',
+    type: CHEF_SELECTED,
     payload: chef
-  }
+  };
+}
+
+
+export function fetchNotes () {
+  const request = axios.get(`${ROOT_URL}/api/posts`);
+  return {
+    type: FETCH_NOTES,
+    payload: request
+  };
+}
+
+export function createNote(props){
+  const request = axios.post(`${ROOT_URL}/api/posts`, {notes: props});
+  console.log(props);
+
+  return {
+    type: CREATE_NOTE,
+    payload: request
+  };
+}
+
+export function fetchNote(id){
+  const request = axios.get( `${ROOT_URL}/api/posts/${id}`);
+
+  return {
+    type: FETCH_NOTE,
+    payload: request
+  };
+}
+
+export function deletePost(id) {
+  const request = axios.delete(`${ROOT_URL}/${id}`);
+
+  return {
+    type: DELETE_NOTE,
+    payload: request
+  };
+}
+
+export function fetchRecipe(id) {
+  const request = axios.get(`http://api.yummly.com/v1/api/recipe/${id}?_app_id=${appId}&_app_key=${appKey}`);
+
+  return{
+    type: FETCH_RECIPE,
+    payload: request
+  };
 }
