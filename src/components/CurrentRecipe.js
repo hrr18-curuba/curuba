@@ -4,25 +4,39 @@ import {reduxForm} from 'redux-form';
 import {fetchRecipe, createNote} from '../actions/index'
 import {Link} from 'react-router';
 
+
+
 class CurrentRecipe extends Component {
+
   static contextTypes ={
     router: PropTypes.object
   }
+
   componentWillMount(){
     this.props.fetchRecipe(this.props.params.id);
   }
     onSubmit(props){
+    console.log(props);
+
     this.props.createNote(props)
     .then( () => {
       this.context.router.push('notebox');
     });
   }
 
+
+
   render(){
+
   const {fields: {title, categories, content},handleSubmit} = this.props;
+
+
+
+
     if(!this.props.currentRecipe){
       return <div>  </div>
     }
+
     console.log(this.props);
     return(
   <div>
@@ -63,6 +77,7 @@ class CurrentRecipe extends Component {
 
       <button type="submit" className="btn btn-primary"> Submit </button>
       <Link to="notebox" className="btn btn-primary"> Cancel </Link>
+
       </form>
       </div>
 
@@ -92,7 +107,7 @@ function mapStateToProps(state){
 }
 export default reduxForm({
    form: 'NewNote',
-  fields: ['title', 'categories', 'content'],
+  fields: ['title', 'categories', 'content', 'recipeId'],
   validate
 }, mapStateToProps, {fetchRecipe, createNote})(CurrentRecipe)
 
