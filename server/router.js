@@ -22,7 +22,7 @@ module.exports = function(app) {
  });
 
  app.get('/api/posts/:id', (req, res) => {
-  Notes.findById({_id : req.params.id, owner: req.user}).then((notes) => {
+  Notes.find({recipeId : req.params.id, owner: req.user}).then((notes) => {
     res.send(notes)
   });
  });

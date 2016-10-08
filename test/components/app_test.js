@@ -1,13 +1,13 @@
-// import {renderComponent, expect} from '../test_helper';
-// import App from '../../src/components/App';
+import {renderComponent, expect} from '../test_helper';
+import App from '../../src/components/App';
 
-// describe('App', () => {
+describe('App', () => {
 
 
-//   it('shows a navbar', () => {
+  it('shows a navbar', () => {
 
-//     const component = renderComponent(App);
+    const component = renderComponent(App);
 
-//     expect(component.find('.navbar')).to.exist;
-//   });
-// });
+    expect(component.find('.navbar')).to.exist;
+  });
+});

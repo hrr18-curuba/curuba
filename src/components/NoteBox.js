@@ -14,7 +14,7 @@ renderPosts() {
   return this.props.notes.map((note) => {
     return (
       <li className="list-group-item" key={note._id} >
-      <Link to={note._id} >
+      <Link to={note.recipeId} >
       <span className="pull-right"> {note.categories} </span>
       <strong> {note.title} </strong>
       </Link>

@@ -119,7 +119,9 @@ export function fetchNotes () {
 
 export function createNote(props, recipeId){
   const request = axios.post(`${ROOT_URL}/api/posts`, {notes: props});
-  console.log(request);
+  console.log('props ', props);
+  console.log('recipeId ', recipeId);
+  console.log('request ', request);
 
   return {
     type: CREATE_NOTE,

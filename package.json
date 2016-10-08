@@ -4,7 +4,7 @@
   "description": "HRR Thesis Project",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "deploy": "node server/server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
@@ -40,7 +40,6 @@
     "express": "^4.14.0",
     "history": "^4.2.0",
     "jwt-simple": "^0.5.0",
-    "mongoose": "^4.6.1",
     "nodemon": "^1.10.2",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
