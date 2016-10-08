@@ -15,10 +15,10 @@ app.use(cors());
 app.use(bodyParser.json({type: '*/*'}));
 router(app);
 
-app.use(express.static(__dirname + "/src/public"));
+app.use(express.static(__dirname + "/../src/public"));
 
 app.get('*', (req, res) => {
- res.sendFile(path.join(__dirname, '/public/index.html'));
+ res.sendFile(path.join(__dirname, '/../src/public/index.html'));
 });
 
 const db =  process.env.MONGODB_URI || 'mongodb://localhost/auth:auth';

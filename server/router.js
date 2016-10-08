@@ -32,7 +32,8 @@ app.post('/api/posts', (req, res) => {
     owner: req.user,
     title: req.body.notes.title,
     categories: req.body.notes.categories,
-    content: req.body.notes.content
+    content: req.body.notes.content,
+    recipeId: req.body.notes.recipeId
 
   });
 
@@ -51,6 +52,8 @@ app.put('/api/posts/:id', (req, res) => {
     note.title = req.body.notes.title;
     note.categories = req.body.notes.categories;
     note.content = req.body.notes.content;
+    note.recipeId = req.body.notes.recipeId;
+
 
     note.save().then((note) =>{
       res.json({
