@@ -43,11 +43,11 @@ ReactDOM.render(
     <Route path="chefs" component={RequireAuth(ChefApp)} />
     <Route path="notebox" component={RequireAuth(NoteBox)} />
     <Route path ="newnote" component={RequireAuth(NewNotes)} />
-    <Route path=":id" component={RequireAuth(CurrentRecipe)} />
+    <Route path="recipes/:id" component={RequireAuth(CurrentRecipe)} />
+    <Route path=":id" component={RequireAuth(RecipeNotes)} />
   </Route>
   </Router>
   </Provider>
   ,document.getElementById("app"));
 
 
- //<Route path=":id" component={RequireAuth(RecipeNotes)} />

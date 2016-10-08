@@ -7,9 +7,9 @@ const requireSignin = passport.authenticate('local', {session: false})
 
 
 module.exports = function(app) {
-  app.get('/', requireAuth, function(req, res){
-    res.send({message: 'API Server'});
-  })
+//   app.get('/', requireAuth, function(req, res){
+//     res.send({message: 'API Server'});
+//   })
 
  app.post('/signin', requireSignin, Authentication.signin);
  app.post('/signup', Authentication.signup);
@@ -22,11 +22,8 @@ module.exports = function(app) {
  });
 
  app.get('/api/posts/:id', (req, res) => {
-  Notes.findOne({ _id : collection.db.bson_serializer.ObjectID.createFromHexString(req.params.id), owner: req.user})
-  .then((note) => {
-    note.title = req.body.note.title;
-    note.categories = req.body.note.categories;
-    note.content = req.body.note.content;
+  Notes.findById({_id : req.params.id, owner: req.user}).then((notes) => {
+    res.send(notes)
   });
  });
 
@@ -35,7 +32,8 @@ app.post('/api/posts', (req, res) => {
     owner: req.user,
     title: req.body.notes.title,
     categories: req.body.notes.categories,
-    content: req.body.notes.content
+    content: req.body.notes.content,
+    recipeId: req.body.notes.recipeId
 
   });
 
@@ -54,6 +52,8 @@ app.put('/api/posts/:id', (req, res) => {
     note.title = req.body.notes.title;
     note.categories = req.body.notes.categories;
     note.content = req.body.notes.content;
+    note.recipeId = req.body.notes.recipeId;
+
 
     note.save().then((note) =>{
       res.json({

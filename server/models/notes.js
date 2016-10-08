@@ -5,6 +5,7 @@ const notesSchema = new Schema({
   title: String,
   categories: String,
   content: String,
+  recipeId: String,
   owner: {type: Schema.Types.ObjectId, ref: 'User'}
 
 });

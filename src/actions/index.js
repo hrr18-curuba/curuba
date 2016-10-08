@@ -19,7 +19,7 @@ import {
 import recipeSearch from '../api/recipeSearch';
 
 
-const ROOT_URL = 'http://localhost:3090';
+const ROOT_URL = '';
 
 export function signinUser({email, password}){
   return function(dispatch){
@@ -117,9 +117,9 @@ export function fetchNotes () {
   };
 }
 
-export function createNote(props){
+export function createNote(props, recipeId){
   const request = axios.post(`${ROOT_URL}/api/posts`, {notes: props});
-  console.log(props);
+  console.log(request);
 
   return {
     type: CREATE_NOTE,

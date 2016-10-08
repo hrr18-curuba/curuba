@@ -20,7 +20,7 @@ export default class RecipeList extends Component {
                     <div className="col-md-6 portfolio-item" key={`RecipeItem_${item.id}_${index}`}>
                     <img className="img-responsive" src={item.imageUrlsBySize['90']} alt="" />
                 <h3>
-                    <Link to={item.id}>{item.recipeName}</Link>
+                    <Link to={"recipes/"+item.id}>{item.recipeName}</Link>
                 </h3>
             </div>
 
