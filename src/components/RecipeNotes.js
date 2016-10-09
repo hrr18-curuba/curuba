@@ -8,8 +8,9 @@ class RecipeNotes extends Component {
     router: PropTypes.object
   }
   componentWillMount(){
-    this.props.fetchRecipe(this.props.params.id);
     this.props.fetchNote(this.props.params.id);
+    this.props.fetchRecipe(this.props.params.id);
+
 
   }
 
@@ -27,12 +28,12 @@ class RecipeNotes extends Component {
       return <div> Coming Soon... </div>
     }
 
-    return(
+  return(
   <div>
   <Link to="notebox" > My NoteBox </Link>
   <button
   className=" btn btn-primary pull-right"
-    onClick={this.onDeleteClick.bind(this)}>
+  onClick={this.onDeleteClick.bind(this)}>
   Delete Note
   </button>
   <h4> {this.props.note['0'].title} </h4>

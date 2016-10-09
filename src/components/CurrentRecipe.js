@@ -18,6 +18,8 @@ class CurrentRecipe extends Component {
 
   onSubmit(props){
     const recipeId = this.props.params.id;
+    const title = this.props.currentRecipe.name;
+    props.title = title;
     props.recipeId = recipeId;
     this.props.createNote(props)
     .then( () => {
@@ -28,7 +30,7 @@ class CurrentRecipe extends Component {
 
 
   render(){
-    const {fields: {title, categories, content},handleSubmit} = this.props;
+    const {fields: {categories, content},handleSubmit} = this.props;
     if(!this.props.currentRecipe){
       return <div>  </div>
     }
@@ -43,14 +45,7 @@ class CurrentRecipe extends Component {
 
   <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
-      <h3> Add a Recipe Note </h3>
-      <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
-      <label> Title </label>
-      <input type="text" className="form-control" {...title}  />
-      <div className="text-help">
-      {title.touched ? title.error : ''}
-      </div>
-      </div>
+
 
       <div className={`form-group ${categories.touched && categories.invalid ? 'has-danger' : ''}`}>
       <label> Tags </label>
@@ -80,9 +75,7 @@ class CurrentRecipe extends Component {
 }
 function validate(values){
   const errors = {};
-  if(!values.title){
-    errors.title = 'Please Enter a title';
-  }
+
   if(!values.categories){
     errors.categories = 'Please Add a Tag';
   }
@@ -100,7 +93,7 @@ function mapStateToProps(state){
 }
 export default reduxForm({
    form: 'NewNote',
-  fields: ['title', 'categories', 'content'],
+  fields: ['categories', 'content'],
   validate
 }, mapStateToProps, {fetchRecipe, createNote})(CurrentRecipe)
 
