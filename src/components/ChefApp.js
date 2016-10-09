@@ -6,7 +6,7 @@ import ChefDetail from '../containers/chef-detail';
 export default class ChefApp extends Component {
      render(){
      return (
-      <div>
+      <div className="chef">
        <ChefList />
        <ChefDetail />
       </div>
