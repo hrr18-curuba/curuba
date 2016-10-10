@@ -31,6 +31,7 @@ class CurrentRecipe extends Component {
 
   render(){
     const {fields: {categories, content},handleSubmit} = this.props;
+    console.log(this.props.currentRecipe);
     if(!this.props.currentRecipe){
       return <div>  </div>
     }
@@ -39,7 +40,23 @@ class CurrentRecipe extends Component {
   <div>
   <Link to="recipes" > Recipe Search </Link>
   <h2>  {this.props.currentRecipe.name}</h2>
-  <p> {this.props.currentRecipe.ingredientLines} </p>
+
+  Total Time: {this.props.currentRecipe.totalTime}
+
+  {this.props.currentRecipe.ingredientLines.map((ingredient, index) => {
+    return (
+      <div>
+      <ul>
+        <li key={`IngredientItem_${index}_${ingredient}`}>
+
+        {ingredient}
+        </li>
+      </ul>
+      </div>
+
+    )
+  })
+}
   <img className="img-responsive" src={this.props.currentRecipe.images["0"].hostedLargeUrl} alt="" />
 
 
@@ -56,7 +73,7 @@ class CurrentRecipe extends Component {
       </div>
 
       <div className={`form-group ${content.touched && content.invalid ? 'has-danger' : ''}`}>
-      <label> Note </label>
+      <label> Notes: </label>
       <textarea className="form-control" {...content} />
       <div className="text-help">
       {content.touched ? content.error : ''}
