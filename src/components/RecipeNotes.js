@@ -37,10 +37,23 @@ class RecipeNotes extends Component {
   Delete Note
   </button>
   <h4> {this.props.note['0'].title} </h4>
+  <h5>Total Time: {this.props.recipe.totalTime} </h5>
+  <h5>Yield: {this.props.recipe.yield} </h5>
   <h5> Tags: {this.props.note['0'].categories}</h5>
-  <p> Notes: {this.props.note['0'].content} </p>
   <h2>  {this.props.recipe.name}</h2>
-  <p> {this.props.recipe.ingredientLines} </p>
+  {this.props.recipe.ingredientLines.map((ingredient, index) => {
+    return (
+      <div>
+      <ul>
+        <li key={`IngredientItem_${index}_${ingredient}`}>
+        {ingredient}
+        </li>
+      </ul>
+      </div>
+    )
+  })
+}
+  <p> Notes: {this.props.note['0'].content} </p>
   <img className="img-responsive" src={this.props.recipe.images["0"].hostedLargeUrl} alt="" />
   </div>
     )

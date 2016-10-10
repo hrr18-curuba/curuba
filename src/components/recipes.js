@@ -22,7 +22,7 @@ class Recipes extends Component {
     return (
       <div className="recipes">
         <div className="form-group">
-          <input onKeyDown={this.searchRecipe.bind(this)} type="text" ref="keyword" className="form-control input-lg" placeholder="Chili, Greek Salad, Grilled Chicken, etc + Enter" />
+          <input onKeyDown={this.searchRecipe.bind(this)} type="text" ref="keyword" className="form-control input-lg" placeholder="Risotto, Guacamole, etc + Enter" />
         </div>
         {()=>{
           if (this.props.status === 'PENDING') {
