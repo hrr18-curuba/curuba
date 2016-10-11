@@ -3,7 +3,7 @@ var sinon = require("sinon");
 var sinonChai = require("sinon-chai");
 var request = require('supertest');
 
-var notes = {};
+
 describe('API integration', function(){
   var server, setupStub, JSONresponse;
    before(function () {

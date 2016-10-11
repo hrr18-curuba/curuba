@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import NavBar from './Navbar';
-import Layout from './Layout';
+import NavBar from './NavBar';
 import Footer from './Footer';
 
-
-
 export default class App extends Component {
-     render(){
-     return (
+  render() {
+    return (
       <div>
         <NavBar />
         {this.props.children}
@@ -15,4 +12,5 @@ export default class App extends Component {
       </div>
     );
   }
-};
+}
+
