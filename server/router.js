@@ -66,7 +66,7 @@ app.put('/api/posts/:id', (req, res) => {
 
 //delete a note
 app.delete('/api/posts/:id', (req, res) => {
-  Notes.find({recipeId: req.params.id, owner: req.user})
+  Notes.findOne({recipeId: req.params.id, owner: req.user})
   .then((note) =>{
     note.remove().then(() => {
       res.json({
