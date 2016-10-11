@@ -48,7 +48,6 @@ class CurrentRecipe extends Component {
       <div>
       <ul>
         <li key={`IngredientItem_${index}_${ingredient}`}>
-
         {ingredient}
         </li>
       </ul>
@@ -80,8 +79,8 @@ class CurrentRecipe extends Component {
       </div>
       </div>
 
-      <button type="submit" className="btn btn-primary"> Submit </button>
-      <Link to="notebox" className="btn btn-primary"> Cancel </Link>
+      <button type="submit" className="btn btn-primary"> Save to Notebox </button>
+      <Link to="recipes" className="btn btn-danger"> Cancel </Link>
 
       </form>
       </div>

@@ -44,7 +44,7 @@ ReactDOM.render(
     <Route path="notebox" component={RequireAuth(NoteBox)} />
     <Route path ="newnote" component={RequireAuth(NewNotes)} />
     <Route path="recipes/:id" component={RequireAuth(CurrentRecipe)} />
-    <Route path=":id" component={RequireAuth(RecipeNotes)} />
+    <Route path="notebox/:id" component={RequireAuth(RecipeNotes)} />
   </Route>
   </Router>
   </Provider>

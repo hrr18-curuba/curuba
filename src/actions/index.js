@@ -138,8 +138,8 @@ export function fetchNote(id){
   };
 }
 
-export function deletePost(id) {
-  const request = axios.delete(`${ROOT_URL}/${id}`);
+export function deleteNote(id) {
+  const request = axios.delete(`${ROOT_URL}/api/posts/${id}`);
 
   return {
     type: DELETE_NOTE,

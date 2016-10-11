@@ -14,7 +14,7 @@ renderPosts() {
   return this.props.notes.map((note) => {
     return (
       <li className="list-group-item" key={note._id} >
-      <Link to={note.recipeId} >
+      <Link to={'notebox/' + note.recipeId} >
       <span className="pull-right"> {note.categories} </span>
       <strong> {note.title} </strong>
       </Link>
@@ -28,8 +28,8 @@ renderPosts() {
     return (
       <div>
       <div className= "text-xs-left">
-      <Link to="newnote" className="btn btn-primary" >
-      Add a Note
+      <Link to="recipes" className="btn btn-primary" >
+      Find a Recipe
       </Link>
       </div>
        <h3> My Recipes Notes </h3>
