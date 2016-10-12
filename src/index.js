@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 import reduxThunk from 'redux-thunk'
-import routes from './routes';
 
 import App from './components/App';
 import ChefApp from './components/ChefApp';
@@ -12,14 +11,14 @@ import CurrentRecipe from './components/CurrentRecipe';
 import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
-import RecipeApp from'./components/RecipeApp';
+import RecipeApp from './components/RecipeApp';
 import RecipeNotes from './components/RecipeNotes';
 import RequireAuth from './components/auth/require_auth';
 import Layout from './components/Layout';
 import NewNotes from './components/NewNotes';
 import NoteBox from './components/NoteBox';
 import reducers from './reducers';
-import {AUTH_USER} from './actions/types';
+import { AUTH_USER } from './actions/types';
 import promise from 'redux-promise';
 
 
@@ -27,8 +26,8 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk, promise)(createSto
 const store = createStoreWithMiddleware(reducers);
 
 const token = localStorage.getItem('token');
-if(token){
-  store.dispatch({type: AUTH_USER});
+if (token) {
+  store.dispatch({ type: AUTH_USER });
 }
 
 ReactDOM.render(
