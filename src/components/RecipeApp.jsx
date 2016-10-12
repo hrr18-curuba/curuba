@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as action from '../actions/index';
-import Recipes from './recipes';
+import Recipes from './Recipes';
 import RecipeList from '../components/RecipeList';
 
 
