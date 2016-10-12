@@ -8,7 +8,7 @@ import {Link} from 'react-router';
 
 class CurrentRecipe extends Component {
 
-  static contextTypes ={
+  static contextTypes = {
     router: PropTypes.object
   }
 
@@ -61,8 +61,6 @@ class CurrentRecipe extends Component {
 
   <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 
-
-
       <div className={`form-group ${categories.touched && categories.invalid ? 'has-danger' : ''}`}>
       <label> Tags </label>
       <input type="text" className="form-control" {...categories} />
@@ -70,7 +68,6 @@ class CurrentRecipe extends Component {
       {categories.touched ? categories.error : ''}
       </div>
       </div>
-
       <div className={`form-group ${content.touched && content.invalid ? 'has-danger' : ''}`}>
       <label> Notes: </label>
       <textarea className="form-control" {...content} />

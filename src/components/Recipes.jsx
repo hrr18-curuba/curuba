@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDom from 'react-dom'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class Recipes extends Component {
@@ -13,18 +13,19 @@ class Recipes extends Component {
     if (event.which === 13) {
       const val = ReactDom.findDOMNode(this.refs.keyword).value;
       this.props.actions.searchRecipeAction(val);
-      console.log(this.props);
-
       document.getElementById('header').style.animationPlayState = 'running';
     }
   }
-  render(){
+  render() {
     return (
       <div className="recipes">
         <div className="form-group">
-          <input onKeyDown={this.searchRecipe.bind(this)} type="text" ref="keyword" className="form-control input-lg" placeholder="Risotto, Guacamole, etc + Enter" />
+          <input onKeyDown={this.searchRecipe.bind(this)} type="text" ref="keyword"
+            className="form-control input-lg"
+            placeholder="Risotto, Guacamole, etc + Enter"
+          />
         </div>
-        {()=>{
+        {() => {
           if (this.props.status === 'PENDING') {
             return (<div className="loading" />);
           }
