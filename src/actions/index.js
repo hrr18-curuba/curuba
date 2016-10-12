@@ -1,6 +1,6 @@
-import axios  from 'axios';
-import {appId, appKey} from '../../config';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
+import axios from 'axios';
+import { appId, appKey } from '../../config';
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -13,7 +13,7 @@ import {
   CREATE_NOTE,
   FETCH_NOTE,
   DELETE_NOTE,
-  FETCH_RECIPE
+  FETCH_RECIPE,
 } from './types';
 
 import recipeSearch from '../api/recipeSearch';
@@ -21,11 +21,11 @@ import recipeSearch from '../api/recipeSearch';
 
 const ROOT_URL = '';
 
-export function signinUser({email, password}){
-  return function(dispatch){
-    axios.post(`${ROOT_URL}/signin`, {email, password})
+export function signinUser({ email, password }) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/signin`, { email, password })
     .then(response => {
-      dispatch({type: AUTH_USER});
+      dispatch({ type: AUTH_USER });
       localStorage.setItem('token', response.data.token);
 
 
@@ -34,54 +34,53 @@ export function signinUser({email, password}){
     .catch(() => {
       dispatch(authError('Incorrect login information'));
     });
-
-  }
+  };
 }
 
-export function signupUser({email, password}){
-  return function(dispatch){
-    axios.post(`${ROOT_URL}/signup`, {email, password})
+export function signupUser({ email, password }) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/signup`, { email, password })
     .then(response => {
-      dispatch({type: AUTH_USER});
+      dispatch({ type: AUTH_USER });
       localStorage.setItem('token', response.data.token);
       browserHistory.push('/recipes');
     })
     .catch(response => dispatch(authError(response.data.error)));
-  }
+  };
 }
 
-export function authError(error){
+export function authError(error) {
   return {
-    type:AUTH_ERROR,
-    payload: error
-      };
+    type: AUTH_ERROR,
+    payload: error,
+  };
 }
 
-export function signoutUser () {
+export function signoutUser() {
   localStorage.removeItem('token');
 
-  return {type: UNAUTH_USER};
+  return { type: UNAUTH_USER };
 }
 
-export function fetchMessage(){
-  return function(dispatch){
+export function fetchMessage() {
+  return function (dispatch) {
     axios.get(ROOT_URL, {
-      headers: {authorization: localStorage.getItem('token')}
+      headers: { authorization: localStorage.getItem('token') },
     })
     .then(rsponse => {
       dispatch({
         type: FETCH_MESSAGE,
-        payload: response.data.message
+        payload: response.data.message,
       });
     });
-  }
+  };
 }
 
 
 function searchRecipesWithAPI(keyword, dispatch) {
- dispatch({
-  type: SEARCH_PENDING,
-    });
+  dispatch({
+    type: SEARCH_PENDING,
+  });
   recipeSearch(keyword, (data) => {
     dispatch({
       type: SEARCH_DONE,
@@ -97,44 +96,39 @@ export function searchRecipeAction(keyword) {
   };
 }
 
-export function selectRecipe(recipe) {
-  console.log("test");
-}
-
 export function selectChef(chef) {
   return {
     type: CHEF_SELECTED,
-    payload: chef
+    payload: chef,
   };
 }
 
-
-export function fetchNotes () {
+export function fetchNotes() {
   const request = axios.get(`${ROOT_URL}/api/posts`);
   return {
     type: FETCH_NOTES,
-    payload: request
+    payload: request,
   };
 }
 
-export function createNote(props, recipeId){
-  const request = axios.post(`${ROOT_URL}/api/posts`, {notes: props});
+export function createNote(props, recipeId) {
+  const request = axios.post(`${ROOT_URL}/api/posts`, { notes: props });
   console.log('props ', props);
   console.log('recipeId ', recipeId);
   console.log('request ', request);
 
   return {
     type: CREATE_NOTE,
-    payload: request
+    payload: request,
   };
 }
 
-export function fetchNote(id){
-  const request = axios.get( `${ROOT_URL}/api/posts/${id}`);
+export function fetchNote(id) {
+  const request = axios.get(`${ROOT_URL}/api/posts/${id}`);
 
   return {
     type: FETCH_NOTE,
-    payload: request
+    payload: request,
   };
 }
 
@@ -143,15 +137,15 @@ export function deleteNote(id) {
 
   return {
     type: DELETE_NOTE,
-    payload: request
+    payload: request,
   };
 }
 
 export function fetchRecipe(id) {
   const request = axios.get(`http://api.yummly.com/v1/api/recipe/${id}?_app_id=${appId}&_app_key=${appKey}`);
 
-  return{
+  return {
     type: FETCH_RECIPE,
-    payload: request
+    payload: request,
   };
 }
