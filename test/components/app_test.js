@@ -1,8 +1,7 @@
-import {renderComponent, expect} from '../test_helper';
+import { renderComponent, expect } from '../test_helper';
 import App from '../../src/components/App';
 
 describe('App', () => {
-
 
   it('shows a navbar', () => {
 
