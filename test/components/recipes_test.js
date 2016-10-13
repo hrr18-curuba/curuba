@@ -1,5 +1,5 @@
-import {renderComponent, expect} from '../test_helper';
-import Recipes from '../../src/components/recipes';
+import { renderComponent, expect } from '../test_helper';
+import Recipes from '../../src/components/Recipes';
 
 describe ('Recipes', () =>{
   let component;
@@ -11,17 +11,17 @@ describe ('Recipes', () =>{
   it('has the correct class', () => {
     expect(component).to.have.class('recipes');
   });
-   it('has a search input', () =>{
+   it('has a search input', () => {
     expect(component.find('input')).to.exist;
   });
 
-  describe('Enter a search input', () =>{
+  describe('Enter a search input', () => {
     beforeEach(() => {
-      component.find('input').simulate('change', 'Apple Pie')
+      component.find('input').simulate('change', 'Apple Pie');
     });
 
-    it('text has been entered into the search input', () =>{
-      expect(component.find('input')).to.have.value('Apple Pie')
+    it('text has been entered into the search input', () => {
+      expect(component.find('input')).to.have.value('Apple Pie');
     });
   });
 });
