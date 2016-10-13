@@ -1,7 +1,7 @@
-import {renderComponent, expect} from '../test_helper';
+import { renderComponent, expect } from '../test_helper';
 import ChefApp from '../../src/components/ChefApp';
 
-describe ('ChefApp', () =>{
+describe ('ChefApp', () => {
   let component;
 
   beforeEach(() => {
@@ -11,4 +11,4 @@ describe ('ChefApp', () =>{
   it('has the correct class', () => {
     expect(component).to.have.class('chef');
   });
-  });
+});
