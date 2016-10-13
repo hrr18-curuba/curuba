@@ -21,7 +21,7 @@ const Layout = () => {
             <h2>Recipes and Chefs on Demand</h2>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Et similique eligendi reiciendis sunt distinctio odit?
+            Et similique eligendi testingreiciendis sunt distinctio odit?
             </p>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
